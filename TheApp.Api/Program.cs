@@ -17,8 +17,11 @@ namespace TheApp.Api
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args) //example returns an IWebHost instead of an IWebHostBuilder, thus the deviantion from the example
+                        .UseStartup<Startup>()
+                        .UseUrls("http://localhost:4000");
+        }
     }
 }
