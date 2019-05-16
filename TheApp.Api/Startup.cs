@@ -34,7 +34,13 @@ namespace TheApp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
+            services.AddDbContext<DataContext>(x =>
+                        x.UseSqlServer(
+                           @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TheApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+                        ));
+
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 #pragma warning disable CS0618 // Type or member is obsolete
             services.AddAutoMapper(); //What to use instead
