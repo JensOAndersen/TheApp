@@ -14,6 +14,7 @@ namespace TheApp.Api.Helpers
         {
             CreateMap<User, UserDTOOut>();
             CreateMap<UserDTOIn, User>();
+            CreateMap<UserDTOIn, DBUser>();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,22 @@ namespace TheApp.Api.Controllers
             _userService = userService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public IActionResult Register([FromBody]UserDTOIn userDTO)
+        {
+            try
+            {
+                _userService.Create(_mapper.Map<UserDTOIn,DBUser>(userDTO), userDTO.Password);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [AllowAnonymous]
@@ -86,12 +103,11 @@ namespace TheApp.Api.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody]UserDTOIn userDto)
         {
-            var user = _mapper.Map<User>(userDto);
-            user.Id = id;
+            userDto.Id = id;
 
             try
             {
-                _userService.Update(user, userDto.Password);
+                _userService.Update(userDto, userDto.Password);
                 return Ok();
             }
             catch (AppException ex)
