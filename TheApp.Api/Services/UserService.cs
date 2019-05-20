@@ -6,10 +6,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using TheApp.Api.Dtos;
 using TheApp.Api.Entities;
 using TheApp.Api.Helpers;
-using TheApp.Api.Models;
+using TheApp.Api.Model;
 
 namespace TheApp.Api.Services
 {

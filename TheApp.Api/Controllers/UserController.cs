@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using TheApp.Api.Dtos;
 using TheApp.Api.Entities;
 using TheApp.Api.Helpers;
 using TheApp.Api.Services;

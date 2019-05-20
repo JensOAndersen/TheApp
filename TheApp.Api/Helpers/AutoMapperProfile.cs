@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TheApp.Api.Dtos;
 using TheApp.Api.Entities;
 
 namespace TheApp.Api.Helpers

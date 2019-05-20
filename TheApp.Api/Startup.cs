@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using TheApp.Api.Helpers;
-using TheApp.Api.Models;
+using TheApp.Api.Model;
 using TheApp.Api.Services;
 using AutoMapper;
 
