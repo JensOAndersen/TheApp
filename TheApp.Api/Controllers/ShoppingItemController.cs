@@ -23,9 +23,20 @@ namespace TheApp.Api.Controllers
 
         // GET: api/ShoppingItem
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ShoppingItem>>> GetShoppingItems()
+        public async Task<ActionResult<IEnumerable<object>>> GetShoppingItems()
         {
-            return await _context.ShoppingItems.ToListAsync();
+
+            return await _context.ShoppingItems
+                            .Include(x => x.User)
+                            .Select(
+                                (x) => new
+                                {
+                                    x.DateofEntry,
+                                    x.Id,
+                                    x.Item,
+                                    x.User.Firstname
+                                }
+                            ).ToListAsync();
         }
 
         // GET: api/ShoppingItem/5

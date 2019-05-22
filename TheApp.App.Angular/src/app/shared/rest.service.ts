@@ -9,7 +9,7 @@ import { retry, catchError }from 'rxjs/operators';
 })
 export class RestService {
 
-  apiUrl = 'http://localhost:44303';
+  apiUrl = 'https://localhost:44303';
 
   constructor(
     private httpClient : HttpClient
@@ -24,12 +24,12 @@ export class RestService {
 
   GetAllShoppingItems() : Observable<ShoppingItem> {
     return this.httpClient.get<ShoppingItem>(this.apiUrl+'/api/ShoppingItem')
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
       )
-  }
-
+    }
+    
   handleError(error){
     let errorMessage = '';
     if(error.error instanceof ErrorEvent){
