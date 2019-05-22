@@ -14,10 +14,6 @@ export class RestService {
   constructor(
     private httpClient : HttpClient
   ) { 
-    this.GetAllShoppingItems()
-      .subscribe((x : ShoppingItem) => {
-        console.log(x);
-      })
   }
 
   httpOptions = {
